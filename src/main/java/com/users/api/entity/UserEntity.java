@@ -1,19 +1,18 @@
-package com.users.entity;
+package com.users.api.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+
+@AllArgsConstructor
+@Builder
 @Entity
 @Getter
-@Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@Setter
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
