@@ -18,25 +18,25 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity registration(@RequestBody UserEntity user) {
+    public ResponseEntity<?> registration(@RequestBody UserEntity user) {
         try {
             userService.registration(user);
-            return ResponseEntity.ok("Пользователь успешно сохранен");
+            return ResponseEntity.ok("user successfully added");
         } catch (UserAlreadyExistException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Произошла ошибка");
+            return ResponseEntity.badRequest().body("invalid request");
         }
     }
 
     @GetMapping
-    public ResponseEntity getOneUser(@RequestParam Long id) {
+    public ResponseEntity<?> getUser(@RequestParam Long id) {
         try {
-            return ResponseEntity.ok(userService.getOne(id));
-        } catch (UserNotFoundException e) {
+            return ResponseEntity.ok(userService.getUser(id));
+        } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Произошла ошибка");
+            return ResponseEntity.badRequest().body("invalid request");
         }
     }
 

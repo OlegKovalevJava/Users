@@ -2,7 +2,6 @@ package com.users.api.service;
 
 import com.users.api.entity.UserEntity;
 import com.users.api.exception.UserAlreadyExistException;
-import com.users.api.exception.UserNotFoundException;
 import com.users.api.model.UserModel;
 import com.users.api.repository.UserRepo;
 import org.springframework.stereotype.Service;
@@ -18,16 +17,13 @@ public class UserService {
 
     public UserEntity registration(UserEntity user) throws UserAlreadyExistException {
         if (userRepo.findByUsername(user.getUsername()) != null) {
-            throw new UserAlreadyExistException("Пользователь с таким именем уже существует");
+            throw new UserAlreadyExistException("user with this name already exists");
         }
         return userRepo.save(user);
     }
 
-    public UserModel getOne(Long id) throws UserNotFoundException {
-        UserEntity user = userRepo.findById(id).get();
-        if (userRepo.findById(id) == null) {
-            throw new UserNotFoundException("Пользователь не найден");
-        }
+    public UserModel getUser(Long id) {
+        UserEntity user = userRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("user with this id was not found"));
         return UserModel.toModel(user);
     }
 
