@@ -1,11 +1,9 @@
 package com.users.api.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 
 @AllArgsConstructor
 @Entity
@@ -18,4 +16,7 @@ public class UserEntity {
     private Long id;
     private String username;
     private String password;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<TodoEntity> todos;
 }

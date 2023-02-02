@@ -4,7 +4,6 @@ import com.users.api.entity.UserEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 public class UserModel {
