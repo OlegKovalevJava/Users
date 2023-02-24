@@ -1,10 +1,7 @@
 package com.users.api.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor
 @Entity
@@ -21,4 +18,5 @@ public class TodoEntity {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
+
 }

@@ -19,4 +19,5 @@ public class UserEntity {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<TodoEntity> todos;
+
 }

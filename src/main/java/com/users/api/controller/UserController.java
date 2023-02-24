@@ -46,7 +46,6 @@ public class UserController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("invalid request");
         }
-
     }
 
 }

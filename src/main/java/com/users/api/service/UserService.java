@@ -23,7 +23,8 @@ public class UserService {
     }
 
     public UserModel getUser(Long id) {
-        UserEntity user = userRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("user with this id was not found"));
+        UserEntity user = userRepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("user with this id was not found"));
         return UserModel.toModel(user);
     }
 
